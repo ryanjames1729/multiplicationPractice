@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Multiplication Practice</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body onload="newProblem()" style="display: flex; min-height: 100vh; flex-direction: column; background-color: #CAB1BD;">
+    <header>
+      <nav>
+        <div class="nav-wrapper" style="background-color: #9F9AA4">
+          <ul class="center" style="color: #E6E6E6;"><strong>Multiplication Practice!</strong></ul>
+        </div>
+      </nav>
+    </header>
+    <main style="flex: 1 0 auto; background-color: #CAB1BD">
+
+      <div class="scroll">
+        <div class="flex-center">
+          <div class="row">
+            <div class="col s6 offset-s3" style="background-color: #E7CFCD">
+              <h3 class="center" id="problem">-</h3>
+              <form class="" action="#" method="post">
+                <input type="text" id="textbox" value="">
+                <p class="right">
+                <button class="btn" name="button" onclick="setTimeout(checkAnswer(this.form), 3000)"><i class="large material-icons">send</i></button>
+                </p>
+              </form>
+              <h2 class="center" id="correct"></h2>
+            </div>
+          </div>
+          </div>
+        </div>
+    </main>
+    <footer>
+      <div class="footer-copyright">
+        <div class="container">
+          © Made by Ryan James
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript">
+      function newProblem(){
+        var number = Math.floor(Math.random() * 25) + 1;
+        var multiplier = Math.floor(Math.random() * 2);
+        if(multiplier == 0){
+          document.getElementById("problem").innerHTML = number + " X " + 2 + " = ";
+          console.log(number + " X " + 2 + " = ");
+        }
+        else{
+          document.getElementById("problem").innerHTML = number + " X " + 4 + " = ";
+          console.log(number + " X " + 4 + " = ");
+        }
+        document.getElementById("correct").innerHTML = document.cookie;
+      }
+      function checkAnswer(form){
+        var str = document.getElementById("problem").innerHTML;
+        var number = parseInt(str);
+        var multiplier = parseInt(str.substring(str.indexOf("X ")+2));
+        console.log(str.substring(str.indexOf("X ")+2));
+        console.log(number);
+        console.log(multiplier);
+        var answer = number * multiplier;
+        var input = form.textbox.value;
+        console.log(answer);
+        console.log(input);
+        if(input == answer){
+          //document.getElementById("broadcast").innerHTML = "CORRECT!";
+          alert("CORRECT!");
+          console.log("CORRECT");
+          if(document.cookie){
+            var correct = parseInt(document.cookie.substring(19));
+            correct += 1;
+            document.cookie = "Number of correct: " + correct;
+          }
+          else{
+            document.cookie = "Number of correct: 1";
+          }
+        }
+        else{
+          alert("The correct answer was " + answer + ".");
+          //document.getElementById("broadcast").innerHTML = "The correct answer was " + answer + ".";
+
+          console.log("incorrect.");
+        }
+        newProblem();
+      }
+    </script>
+  </body>
+</html>
