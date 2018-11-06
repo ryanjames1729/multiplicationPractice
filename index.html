@@ -29,12 +29,12 @@
           <div class="row">
             <div class="col s6 offset-s3" style="background-color: #E7CFCD">
               <h3 class="center" id="problem">-</h3>
-              <form>
+              <form class="" action="#" method="">
                 <input type="text" id="textbox" value="">
                 <p class="right">
                 <button class="btn" name="button" onclick="checkAnswer(this.form)"><i class="large material-icons">send</i></button>
                 </p>
-              </form>
+              </form><br><br>
               <h6 class="center" id="correct"></h6>
             </div>
           </div>
@@ -60,6 +60,7 @@
           document.getElementById("problem").innerHTML = number + " X " + 4 + " = ";
           console.log(number + " X " + 4 + " = ");
         }
+        document.getElementById("textbox").value = "";
         document.getElementById("correct").innerHTML = document.cookie;
       }
       function checkAnswer(form){
