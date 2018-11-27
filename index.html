@@ -51,15 +51,9 @@
     <script type="text/javascript">
       function newProblem(){
         var number = Math.floor(Math.random() * 12) + 1;
-        var multiplier = Math.floor(Math.random() * 2);
-        if(multiplier == 0){
-          document.getElementById("problem").innerHTML = number + " X " + 2 + " = ";
-          console.log(number + " X " + 2 + " = ");
-        }
-        else{
-          document.getElementById("problem").innerHTML = number + " X " + 4 + " = ";
-          console.log(number + " X " + 4 + " = ");
-        }
+        var multiplier = Math.floor(Math.random() * 5) + 1;
+        document.getElementById("problem").innerHTML = number + " X " + multiplier " = ";
+        
         document.getElementById("textbox").value = "";
         document.getElementById("correct").innerHTML = document.cookie;
       }
